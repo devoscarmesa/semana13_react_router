@@ -1,22 +1,36 @@
 import React from 'react';
-import { Container,Row } from 'react-bootstrap';
 import Head from './components/Head'
-import CntJumbotron from './components/CntJumbotron'
-import CntBox1 from './components/CntBox1'
-import CntBox2 from './components/CntBox2'
-import CntBox3 from './components/CntBox3'
+import Home from './components/Home'
+import Projects from './components/Projects'
+import Downloads from './components/Downloads'
+import Contact from './components/Contact'
+import Services from './components/Services'
+import About from './components/About'
+import { Container } from 'react-bootstrap';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-function App() {
-  return (
-    <Container>
-        <Head/>
-        <CntJumbotron/>
-        <Row>
-          <CntBox1/><CntBox2/><CntBox3/>
-        </Row>
-    </Container>
-  );
+export default class App extends React.Component {
+  constructor(props){
+      super() 
+      this.state = {menu_option : ""}
+  }
+  render() {
+    return (
+      <BrowserRouter>
+        <Container>
+          <Head App = {this}/>
+          <Switch>
+            <Route path='/' exact render={() => <Home App = {this}/>}/>
+            <Route path='/home' exact render={() => <Home App = {this}/>} />
+            <Route path='/projects' exact render={() => <Projects App = {this}/>} />
+            <Route path='/services' exact render={() => <Services App = {this}/>} />
+            <Route path='/downloads' exact render={() => <Downloads App = {this}/>} />
+            <Route path='/about' exact render={() => <About App = {this}/>} />
+            <Route path='/contact' exact render={() => <Contact App = {this}/>} />
+          </Switch>
+        </Container>
+      </BrowserRouter>
+    );
+  }
 }
-
-export default App;
