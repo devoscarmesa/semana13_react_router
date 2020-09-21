@@ -7,7 +7,7 @@ import Contact from './components/Contact'
 import Services from './components/Services'
 import About from './components/About'
 import { Container } from 'react-bootstrap';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 export default class App extends React.Component {
@@ -21,7 +21,7 @@ export default class App extends React.Component {
         <Container>
           <Head App = {this}/>
           <Switch>
-            <Route path='/' exact render={() => <Home App = {this}/>}/>
+            <Route path='/' exact render={() => {return <Redirect to="/home" /> }}/>
             <Route path='/home' exact render={() => <Home App = {this}/>} />
             <Route path='/projects' exact render={() => <Projects App = {this}/>} />
             <Route path='/services' exact render={() => <Services App = {this}/>} />
