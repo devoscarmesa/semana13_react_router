@@ -7,7 +7,7 @@ import Contact from './components/Contact'
 import Services from './components/Services'
 import About from './components/About'
 import { Container } from 'react-bootstrap';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect, HashRouter } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 export default class App extends React.Component {
@@ -17,7 +17,7 @@ export default class App extends React.Component {
   }
   render() {
     return (
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Container>
           <Head App = {this}/>
           <Switch>
